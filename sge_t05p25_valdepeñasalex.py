@@ -45,47 +45,57 @@ class Rectangulo:
     def base(self):
         print("La base del rectángulo es {}".format( self.vBase ) )
 
+    def comprobarRectangulo(self):
+        
+
+
 
 #PROBAMOS NUESTRO PROGRMA
 puntosCorrecto=False
 while not puntosCorrecto:
-    print("Introduce el punto x del primer punto")
-    x1=input()
-    print("Introduce el punto y del primer punto")
-    y1=input()
-    print("Introduce el punto x del segundo punto")
-    x2=input()
-    print("Introduce el punto y del segundo punto")
-    y2=input()
+    print("Introduce el punto X del primer punto")
+    x1=int(input())
+    print("Introduce el punto X del primer punto")
+    y1=int(input())
+    print("Introduce el punto Y del segundo punto")
+    x2=int(input())
+    print("Introduce el punto Y del segundo punto")
+    y2=int(input())
     
     if x1==x2 and y1==y2:
         print("Los puntos son iguales, introduce otros") 
     else:
         puntosCorrecto=True
-        p1= Punto(x1,y1)
-        p2= Punto(x2,y2)
+        A= Punto(x1,y1)
+        B= Punto(x2,y2)
 
 opcionElegida=0
-while opcionElegida != 7:
+while opcionElegida != 3:
     try:
-        
-        print("1) Operaciones con puntos. Muestra el siguiente submenú:")
-        print("2) Operaciones con puntos. Muestra el siguiente submenú:")
+        print("Elige una de estas opciónes")
+        print("1) Operaciones con puntos.")
+        print("2) Operaciones con rectángulos.")
         print("3) Salir ")
+        opcionElegida=int(input())
 
-        opcion2=""
+        opcion2=0
         if opcionElegida==1:
-            print("     1.Mostrar cuadrante al que pertenecen")
-            print("     2.Calcular vector.")
-            print("     3.Calcular distancia")
+            print("Elige una de estas opciónes")
+            print("1.Mostrar cuadrante al que pertenecen")
+            print("2.Calcular vector")
+            print("3.Calcular distancia")
+            opcion2=int(input())
 
             if opcion2==1:
-                print()
+                A.cuadrante()
+                B.cuadrante()
 
-            if opcion2==2:
-                print() 
+            elif opcion2==2:
+                A.vector(B)
+                B.vector(A)
             else:
-                print("Hasta luego!")
+                A.distancia(B)
+                B.distancia(A)
 
         if opcionElegida==2:
             print("     1.Calcular base")

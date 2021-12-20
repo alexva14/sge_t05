@@ -64,7 +64,11 @@ while opcionElegida != 7:
             print("Introduce el correo")
             correo=input()
             print("Introduce si es preferente o no")
-            prioritario=bool(input())
+            if input()=="Si":
+                prioritario=True
+            else:
+                prioritario=False
+
             clientes[dni]=[nombre,apellido, direccion, telefono, correo, prioritario]
 
             
