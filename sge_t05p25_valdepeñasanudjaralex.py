@@ -62,7 +62,8 @@ while not puntosCorrecto:
         print("Los puntos son iguales, introduce otros") 
     else:
         puntosCorrecto=True
-        Punto p=
+        p1= Punto(x1,y1)
+        p2= Punto(x2,y2)
 
 opcionElegida=0
 while opcionElegida != 7:

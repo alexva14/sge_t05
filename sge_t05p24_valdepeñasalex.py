@@ -119,7 +119,7 @@ while opcionElegida != 7:
             print("Introudce un numero entre el 1 y el 7 por favor")
         
     except ValueError: 
-        print("Debes introducir un número del 1 al 3")
+        print("Debes introducir un número. Debe ser del 1 al 7")
     
     
         
