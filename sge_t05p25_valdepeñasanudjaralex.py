@@ -67,11 +67,7 @@ while opcionElegida != 7:
     try:
         
         print("1) Operaciones con puntos. Muestra el siguiente submenú:")
-        
         print("2) Operaciones con puntos. Muestra el siguiente submenú:")
-        print("     a.Calcular base")
-        print("     a.Calcular altura")
-        print("     a.Calcular área.")
         print("3) Salir ")
 
         if opcionElegida==1:

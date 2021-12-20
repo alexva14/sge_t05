@@ -74,13 +74,17 @@ while opcionElegida != 7:
 
             
         elif opcionElegida == 3: 
-            print("Introduce el DNI del cliente")
-            dni=input()
-            print("Los datos del clientes son los sigueintes: ")
-            mostrartodos(dni)
-            
 
-            
+            dniCorrecto=False
+            while not dniCorrecto:
+                print("Introduce el DNI del cliente que quieres ver")
+                dni=input()
+                if dni in clientes:
+                    print("Los datos del clientes son los sigueintes: ")
+                    mostrartodos(dni)
+                else:
+                    print("El DNI no existe")
+
         elif opcionElegida == 4: 
             print("Estos son todos los clientes que tenemos almacenados: ")
             for k, v in clientes.items():
