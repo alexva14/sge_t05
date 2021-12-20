@@ -62,6 +62,8 @@ while not puntosCorrecto:
         print("Los puntos son iguales, introduce otros") 
     else:
         puntosCorrecto=True
+        Punto p=
+
 opcionElegida=0
 while opcionElegida != 7:
     try:
@@ -70,15 +72,26 @@ while opcionElegida != 7:
         print("2) Operaciones con puntos. Muestra el siguiente submenú:")
         print("3) Salir ")
 
+        opcion2=""
         if opcionElegida==1:
-            print("     a.Mostrar cuadrante al que pertenecen")
-            print("     b.Calcular vector.")
-            print("     c.Calcular distancia")
-        if opcionElegida==1:
-            print("     a.Calcular base")
-            print("     a.Calcular altura")
-            print("     a.Calcular área.")
+            print("     1.Mostrar cuadrante al que pertenecen")
+            print("     2.Calcular vector.")
+            print("     3.Calcular distancia")
+
+            if opcion2==1:
+                print()
+
+            if opcion2==2:
+                print() 
+            else:
+                print("Hasta luego!")
+
+        if opcionElegida==2:
+            print("     1.Calcular base")
+            print("     2.Calcular altura")
+            print("     3.Calcular área.")
         if opcionElegida==3:
            print("Hasta luego!")
+
     except ValueError: 
         print("Debes introducir un número del 1 al 3")

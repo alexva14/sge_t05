@@ -6,7 +6,7 @@ clientes['123']=['Fran', 'Cozar Andujar', 'Mayor 4', 654678890, 'fran@gmail.com'
 
 opcionElegida = 0
 
-def mostrartodos(dni):
+def mostrarCliente(dni):
     print("Nombre: ", clientes[dni][0])
     print("Apellidos: ", clientes[dni][1])
     print("Direccion: ", clientes[dni][2])
@@ -14,6 +14,16 @@ def mostrartodos(dni):
     print("Correo: ", clientes[dni][4])
     print("Preferente: ", clientes[dni][5])
     print("")
+
+def mostrar(listaOrdenada):
+    for i in listaOrdenada:
+        print("Nombre: ", i[1][0])
+        print("Apellidos: ", i[1][1])
+        print("Direccion: ",i[1][2])
+        print("Telefono: ", i[1][3])
+        print("Correo: ", i[1][4])
+        print("Preferente: ", i[1][5])
+        print("")
 
 
 while opcionElegida != 7:
@@ -81,7 +91,7 @@ while opcionElegida != 7:
                 dni=input()
                 if dni in clientes:
                     print("Los datos del clientes son los sigueintes: ")
-                    mostrartodos(dni)
+                    mostrarCliente(dni)
                 else:
                     print("El DNI no existe")
 
@@ -99,7 +109,7 @@ while opcionElegida != 7:
         elif opcionElegida == 6: 
             print("Estos son todos los clientes que tenemos almacenados (ordenados por apellido): ")
             listaOrdenada= sorted(clientes.items(), key=lambda item:item[1][1])
-            print(listaOrdenada)
+            mostrar(listaOrdenada)
             
 
         elif opcionElegida == 7: 
