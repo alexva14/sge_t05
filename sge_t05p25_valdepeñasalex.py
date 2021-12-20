@@ -35,19 +35,32 @@ class Punto:
                 self, p, d))
     
 class Rectangulo:
-    inicial=0
-    final=0
+    inicial=Punto(0,0)
+    final=Punto(0,0)
 
     def __init__(self,inicial, final):
         self.inicial = inicial
         self.final = final
+        self.vBase = abs(self.final.x - self.inicial.x)
+        self.vAltura = abs(self.final.y - self.inicial.y)
+        self.vArea = self.vBase * self.vAltura
+        
 
     def base(self):
         print("La base del rectángulo es {}".format( self.vBase ) )
 
-    def comprobarRectangulo(self):
-        
+    def es_rectangulo(self):
+        if (self.inicial.x==self.final.x or self.inicial.y==self.final.y):
+            print("No forman un rectángulo los dos puntos")
+        else:
+            print("Si forman un rectángulo los dos puntos")
 
+    def base(self):
+            print("La base del rectángulo es {}".format( self.vBase ) )
+    def altura(self):
+            print("La altura del rectángulo es {}".format( self.vAltura ) )
+    def area(self):
+            print("El área del rectángulo es {}".format( self.vArea ) )
 
 
 #PROBAMOS NUESTRO PROGRMA
@@ -98,11 +111,22 @@ while opcionElegida != 3:
                 B.distancia(A)
 
         if opcionElegida==2:
-            print("     1.Calcular base")
-            print("     2.Calcular altura")
-            print("     3.Calcular área.")
+            print("Elige una de estas opciónes")
+            print("1.Calcular base")
+            print("2.Calcular altura")
+            print("3.Calcular área.")
+            opcion2=int(input())
+            Rect= Rectangulo(A,B)
+            if opcion2==1:
+                Rect.base()
+
+            elif opcion2==2:
+                Rect.altura()
+            else:
+                Rect.area()
+
         if opcionElegida==3:
-           print("Hasta luego!")
+            print("Hasta luego!")
 
     except ValueError: 
         print("Debes introducir un número del 1 al 3")
