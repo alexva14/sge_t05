@@ -50,7 +50,7 @@ while opcionElegida != 7:
             print("Introduce el direccion")
             direccion=input()
             print("Introduce el telefono")
-            telefono=input()
+            telefono=int(input())
             print("Introduce el correo")
             correo=input()
             print("Introduce si es preferente o no")

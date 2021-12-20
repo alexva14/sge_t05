@@ -79,12 +79,10 @@ while opcionElegida != 7:
             print("     b.Calcular vector.")
             print("     c.Calcular distancia")
         if opcionElegida==1:
-            print("     a.Mostrar cuadrante al que pertenecen")
-            print("     b.Calcular vector.")
-            print("     c.Calcular distancia")
-        if opcionElegida==1:
-            print("     a.Mostrar cuadrante al que pertenecen")
-            print("     b.Calcular vector.")
-            print("     c.Calcular distancia")
+            print("     a.Calcular base")
+            print("     a.Calcular altura")
+            print("     a.Calcular área.")
+        if opcionElegida==3:
+           print("Hasta luego!")
     except ValueError: 
         print("Debes introducir un número del 1 al 3")
