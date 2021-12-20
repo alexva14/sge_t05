@@ -1,8 +1,8 @@
 
 #declaroamos el diccionario donde vamos a ir almacenando los clienes y daremos añadimos clientes
 clientes= {}
-clientes['71368908X']=['Valdepeñas Andujar', 'Alex', 'Calle Mayor 4', 678909987, 'alex@gmail.com', True]
-clientes['123']=['Cozar Andujar', 'Fran', 'Mayor 4', 654678890, 'fran@gmail.com', False]
+clientes['71368908X']=['Alex','Valdepeñas Andujar', 'Calle Mayor 4', 678909987, 'alex@gmail.com', True]
+clientes['123']=['Fran', 'Cozar Andujar', 'Mayor 4', 654678890, 'fran@gmail.com', False]
 
 opcionElegida = 0
 
@@ -45,7 +45,7 @@ while opcionElegida != 7:
             correo=input()
             print("Introduce si es preferente o no")
             prioritario=bool(input())
-            clientes[dni]=[apellido, nombre, direccion, telefono, correo, prioritario]
+            clientes[dni]=[nombre,apellido, direccion, telefono, correo, prioritario]
 
             
         elif opcionElegida == 2: 
@@ -89,19 +89,18 @@ while opcionElegida != 7:
 
         elif opcionElegida == 6: 
             print("Estos son todos los clientes que tenemos almacenados (ordenados por apellido): ")
-            for k, v in sorted(clientes.items()):
-                print("Dni: ", k, " Datos: ", v)
+            listaOrdenada= sorted(clientes.items(), key=lambda item:item[1][1])
+            print(listaOrdenada)
             
 
         elif opcionElegida == 7: 
             print("Hasta pronto!")
         
         elif opcionElegida<1 or opcionElegida>7:
-            print("Intorudce un numro entre el 1 y el 7 por favor")
+            print("Introudce un numero entre el 1 y el 7 por favor")
         
     except ValueError: 
-        print("Debes introducir un número del 1 al 7")
-
+        print("Debes introducir un número del 1 al 3")
     
     
         
