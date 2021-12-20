@@ -67,13 +67,24 @@ while opcionElegida != 7:
     try:
         
         print("1) Operaciones con puntos. Muestra el siguiente submenú:")
-        print("     a.Mostrar cuadrante al que pertenecen")
-        print("     b.Calcular vector.")
-        print("     c.Calcular distancia")
+        
         print("2) Operaciones con puntos. Muestra el siguiente submenú:")
         print("     a.Calcular base")
         print("     a.Calcular altura")
         print("     a.Calcular área.")
         print("3) Salir ")
+
+        if opcionElegida==1:
+            print("     a.Mostrar cuadrante al que pertenecen")
+            print("     b.Calcular vector.")
+            print("     c.Calcular distancia")
+        if opcionElegida==1:
+            print("     a.Mostrar cuadrante al que pertenecen")
+            print("     b.Calcular vector.")
+            print("     c.Calcular distancia")
+        if opcionElegida==1:
+            print("     a.Mostrar cuadrante al que pertenecen")
+            print("     b.Calcular vector.")
+            print("     c.Calcular distancia")
     except ValueError: 
         print("Debes introducir un número del 1 al 3")

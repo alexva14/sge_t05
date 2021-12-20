@@ -6,6 +6,16 @@ clientes['123']=['Fran', 'Cozar Andujar', 'Mayor 4', 654678890, 'fran@gmail.com'
 
 opcionElegida = 0
 
+def mostrartodos(dni):
+    print("Nombre: ", clientes[dni][0])
+    print("Apellidos: ", clientes[dni][1])
+    print("Direccion: ", clientes[dni][2])
+    print("Telefono: ", clientes[dni][3])
+    print("Correo: ", clientes[dni][4])
+    print("Preferente: ", clientes[dni][5])
+    print("")
+
+
 while opcionElegida != 7:
     try:
         
@@ -66,14 +76,9 @@ while opcionElegida != 7:
         elif opcionElegida == 3: 
             print("Introduce el DNI del cliente")
             dni=input()
-            print("Los datos del cleinte son los sigueintes: ")
-            print("Nombre: ", clientes[dni][0])
-            print("Apellidos: ", clientes[dni][1])
-            print("Direccion: ", clientes[dni][2])
-            print("Telefono: ", clientes[dni][3])
-            print("Correo: ", clientes[dni][4])
-            print("Preferente: ", clientes[dni][5])
-            print("")
+            print("Los datos del clientes son los sigueintes: ")
+            mostrartodos(dni)
+            
 
             
         elif opcionElegida == 4: 
