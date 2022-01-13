@@ -1,8 +1,8 @@
 import datetime
 class Fecha: 
-    dia:0
-    mes:0
-    anno:0
+    dia=0
+    mes=0
+    anno=0
 
     def __init__(self, dia, mes, anno):
         self.dia= dia
