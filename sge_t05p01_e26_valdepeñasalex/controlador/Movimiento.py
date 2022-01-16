@@ -1,4 +1,5 @@
-import Fecha
+from sge_t05p01_e26_valdepeñasalex.controlador.Fecha import Fecha
+
 class Movimiento:
     fecha=0
     cantidad=0

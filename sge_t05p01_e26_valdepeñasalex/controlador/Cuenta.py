@@ -1,4 +1,6 @@
-import os, Movimiento
+import os
+from sge_t05p01_e26_valdepeñasalex.controlador.Movimiento import Movimiento
+
 class Cuenta:
     cuenta=0
     numero_cuenta=cuenta
@@ -13,7 +15,8 @@ class Cuenta:
         self.dni=dni
         self.titular=titular
         self.saldo= saldo
-        self.cuenta+=1
+        self.cuenta= Cuenta.cuenta+1
+        Cuenta.cuenta+=1
         self.numero_cuenta=self.cuenta
         
     def imprimir_cuenta(self):

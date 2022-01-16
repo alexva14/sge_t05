@@ -1,4 +1,5 @@
-import Cuenta
+from sge_t05p01_e26_valdepeñasalex.controlador.Cuenta import Cuenta
+
 class Banco:
     nombre=""
     cuentas=[]
@@ -11,6 +12,6 @@ class Banco:
     def existe_cliente(self, dni):
         existe=False
         for cuenta in self.cuentas:
-            if (Cuenta(cuenta).nombre ==dni):
+            if (Cuenta(cuenta).dni ==dni):
                 existe=True
         return existe
