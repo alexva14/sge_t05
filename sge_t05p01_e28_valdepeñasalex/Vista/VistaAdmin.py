@@ -1,6 +1,9 @@
 from datetime import date
 
 class VistaAdmin:
+    def __init__(self, contr): 
+        self._controlador=contr
+
     def inicio(self):
         fdate = date.today().strftime('%d/%m/%Y')
         print("Bienvenido. Hoy es: {}".format(fdate))
@@ -14,7 +17,7 @@ class VistaAdmin:
                 self.salir
 
     def mostrarMenu(self):
-        print("Menú:") 
+        print("Menú Admin:") 
         print("====")
         print("1. Ver listado completo de socios")
         print("2. Insertar un nuevo socio")

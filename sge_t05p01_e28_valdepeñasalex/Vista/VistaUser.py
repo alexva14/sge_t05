@@ -1,6 +1,10 @@
 from datetime import date
 
 class VistaUser:
+
+    def __init__(self, contr): 
+        self._controlador=contr
+
     def inicio(self):
         fdate = date.today().strftime('%d/%m/%Y')
         print("Bienvenido. Hoy es: {}".format(fdate))
@@ -14,7 +18,7 @@ class VistaUser:
                 self.salir
 
     def mostrarMenu(self):
-        print("Menú:") 
+        print("Menú Usuario:") 
         print("====")
         print("1. Ver mis próximos eventos y la lista de inscritos")
         print("2. Ver y apuntarme a eventos abiertos")

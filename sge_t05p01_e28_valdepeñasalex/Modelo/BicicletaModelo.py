@@ -1,8 +1,5 @@
-from Modelo.ReparacionModelo import Reparacion
-
 
 from Modelo.ReparacionModelo import Reparacion
-
 class Bicicleta:
     def __init__(self, fechaCompra, marca, modelo, tipo, color, tamannoCuadro, tamannoRuedas, precio, listaReparaciones: Reparacion):
         self._fechaCompra=fechaCompra
