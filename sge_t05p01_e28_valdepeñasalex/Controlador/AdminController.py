@@ -1,8 +1,5 @@
 from datetime import datetime
 
-
-from datetime import datetime
-
 from Vista.VistaAdmin import VistaAdmin
 from Modelo.ClubModelo import Club
 from Modelo.Prueba import Prueba
@@ -20,6 +17,7 @@ class ControladorAdmin:
     def inicio(self, usuario, contrasenna):
         Prueba.cargarUsuarios(self._club)
         Prueba.cargarSocios(self._club)
+        Prueba.cargarControlCuotas(self._club)
         resultado=self._club.verificarUsuariosAdm(usuario, contrasenna)
         if(resultado==1):
             while True:
@@ -72,3 +70,6 @@ class ControladorAdmin:
             datos=self._vista.pedirDatosSocio()
         else:
             datos
+    
+    #def añadirPareja(self, dnipareja1, dnipareja2):
+

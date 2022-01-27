@@ -126,6 +126,6 @@ class VistaAdmin:
                 correcto=True            
             if not correcto:
                 correcto=False
-        #self._controlador.añadirPareja()
+        self._controlador.añadirPareja(dnipareja1, dnipareja2)
             
 
