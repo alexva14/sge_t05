@@ -7,6 +7,7 @@ class ControladorUser:
         self._club=club
         self._vista=VistaUser(self)
         self.inicio(usuario, contrasenna)
+        
 
     def inicio(self, usuario, contrasenna):
         Prueba.cargarUsuarios(self._club)

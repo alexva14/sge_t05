@@ -6,7 +6,6 @@ class Club:
     def __init__(self, nombreClub, cif):
         self._nombreClub=nombreClub
         self._cif=cif
-        self._listaUsuarios=None
         self._sedeSocial=None
         self._dicSocios=None
         self._listaEventos=None

@@ -9,4 +9,6 @@ class Socio:
         self._telefono=telefono
         self._correoElectronico=correoElectronico
         self.bicicletas=None
-        self.familia=None
+        self.familia={'Pareja': None,
+                        "Hijos":None,
+                        "Padres": None}
