@@ -10,5 +10,5 @@ class Socio:
         self._correoElectronico=correoElectronico
         self.bicicletas=None
         self.familia={'Pareja': None,
-                        "Hijos":None,
-                        "Padres": None}
+                        "Hijos":[],
+                        "Padres": []}

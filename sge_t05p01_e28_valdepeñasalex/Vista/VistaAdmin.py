@@ -112,6 +112,11 @@ class VistaAdmin:
             accion=self._controlador.añadirFamiliares(opc, dnipareja1)
             if accion==1:
                 print("Este usuario ya dispone de una pareja asignada")
+            if accion==2:
+                print("Primero debes asignar una pareja a este cliente")
+            if accion==3:
+                print("Este usuario ya tiene dos hijos asociados")
+
         else:print("Debes introducir un número entero entre 0 y 9.")
     
     def pedirDatosPareja(self, dnipareja1):
@@ -127,5 +132,22 @@ class VistaAdmin:
             if not correcto:
                 correcto=False
         self._controlador.añadirPareja(dnipareja1, dnipareja2)
+
+    def pedirDatosHijo(self, dnipareja1):
+        correcto=True
+        while correcto:
+            print("Introduce el dni del hijo (debe ser socia del club): ")
+            dnihijo=input()
+            correcto=self._controlador.comprobarExisteDni(dnihijo)
+            correcto=False
+            if (dnihijo==dnipareja1):
+                print("Un usuario no se puede tener de hijo a si mismo")
+                correcto=True            
+            if not correcto:
+                correcto=False
+            if(self._controlador.comprobarPadres(dnihijo)):
+                print("Este usuario ya tiene unos padres asociados")
+            else:
+                self._controlador.añadirHijo(dnipareja1, dnihijo)
             
 

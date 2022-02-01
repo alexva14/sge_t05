@@ -12,11 +12,10 @@ if __name__ == "__main__":
     #argumentos=["app.py","-u", "22222222B", "-p", "usuario1"]
     argumentos=sys.argv
 
-    ##CONTROLAR OPCIONS -P Y -U##
-
-
-    if (club.verificarUsuarioAdmin(argumentos)):
-        controlador = ControladorAdmin(club, argumentos[2], argumentos[4])
+    if(argumentos[1]=="-u" and argumentos[3]=="-p"):
+        if (club.verificarUsuarioAdmin(argumentos)):
+            controlador = ControladorAdmin(club, argumentos[2], argumentos[4])
+        else:
+            controlador = ControladorUser(club, argumentos[2], argumentos[4])
     else:
-        controlador = ControladorUser(club, argumentos[2], argumentos[4])
-
+        print("Los argumentos deben ser -u y -p")
