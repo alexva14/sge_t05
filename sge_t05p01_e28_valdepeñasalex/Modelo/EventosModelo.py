@@ -1,7 +1,7 @@
 from Modelo.SociosModelo import Socio
 
 class Evento: 
-    def __init__(self, fechaEvento, fechaMaxInscripcion, localidad, provincia, organizador, kmTotales, precio, listadoSociosApuntados: Socio):
+    def __init__(self, fechaEvento, fechaMaxInscripcion, localidad, provincia, organizador, kmTotales, precio, listadoSociosApuntados):
         self._fechaEvento=fechaEvento
         self._fechaMaxInscripcion=fechaMaxInscripcion
         self._localidad=localidad

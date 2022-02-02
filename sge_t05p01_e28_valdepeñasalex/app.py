@@ -8,9 +8,9 @@ from Controlador.UserController import ControladorUser
 if __name__ == "__main__":
     #creamos el club
     club= Club("Los satanases del Infierno", 13230)
-    #argumentos=["app.py","-u", "11111111A", "-p", "admin", "-A"]
+    argumentos=["app.py","-u", "11111111A", "-p", "admin", "-A"]
     #argumentos=["app.py","-u", "22222222B", "-p", "usuario1"]
-    argumentos=sys.argv
+    #argumentos=sys.argv
 
     if(argumentos[1]=="-u" and argumentos[3]=="-p"):
         if (club.verificarUsuarioAdmin(argumentos)):

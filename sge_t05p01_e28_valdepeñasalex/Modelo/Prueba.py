@@ -1,6 +1,7 @@
 from Modelo.SociosModelo import Socio
 from Modelo.UsuarioModelo import Usuario
 from Modelo.ClubModelo import Club
+from Modelo.EventosModelo import Evento
 
 class Prueba: 
     def cargarSocios(club : Club):
@@ -22,3 +23,7 @@ class Prueba:
         })
         club._controlCuotas=({2022: datos_año,
                                 2023:None})
+    
+    def cargarEventos(club : Club):
+        eventos=[Evento('20/04/2019', '15/04/2019', "Valdepeñas", "Ciudad Real", "MES", 60, 15, ['11111111A']), Evento('20/04/2022', '15/04/2022', "Membrilla", "Ciudad Real", "ORP", 100, 5, ['11111111A', '12123123X'] )]
+        club._listaEventos=eventos

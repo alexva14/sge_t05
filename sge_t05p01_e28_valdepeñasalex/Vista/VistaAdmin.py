@@ -116,7 +116,8 @@ class VistaAdmin:
                 print("Primero debes asignar una pareja a este cliente")
             if accion==3:
                 print("Este usuario ya tiene dos hijos asociados")
-
+            if accion==4:
+                print("Este usuario ya tiene padres asociados")
         else:print("Debes introducir un número entero entre 0 y 9.")
     
     def pedirDatosPareja(self, dnipareja1):
@@ -125,7 +126,7 @@ class VistaAdmin:
             print("Introduce el dni de la pareja (debe ser socia del club): ")
             dnipareja2=input()
             correcto=self._controlador.comprobarExisteDni(dnipareja2)
-            correcto=False
+            #correcto=False
             if (dnipareja2==dnipareja1):
                 print("Un usuario no se puede tener de paereja a si mismo")
                 correcto=True            
@@ -136,18 +137,50 @@ class VistaAdmin:
     def pedirDatosHijo(self, dnipareja1):
         correcto=True
         while correcto:
-            print("Introduce el dni del hijo (debe ser socia del club): ")
+            print("Introduce el dni del hij@ (debe ser soci@ del club): ")
             dnihijo=input()
             correcto=self._controlador.comprobarExisteDni(dnihijo)
-            correcto=False
+            #correcto=False
             if (dnihijo==dnipareja1):
                 print("Un usuario no se puede tener de hijo a si mismo")
                 correcto=True            
+            elif (self._controlador.comprobarPadres(dnihijo)):
+                print("Este usuario ya tiene unos padres asociados")
             if not correcto:
                 correcto=False
-            if(self._controlador.comprobarPadres(dnihijo)):
-                print("Este usuario ya tiene unos padres asociados")
-            else:
-                self._controlador.añadirHijo(dnipareja1, dnihijo)
-            
-
+        self._controlador.añadirHijo(dnipareja1, dnihijo)
+    
+    def pedirDatosPadres(self, dniuser):
+        correcto=True
+        while correcto:
+            print("Introduce el dni de uno de los padres: ")
+            dnipareja2=input()
+            correcto=self._controlador.comprobarExisteDni(dnipareja2)
+            #correcto=False
+            if (not correcto):
+                if (dnipareja2==dniuser):
+                    print("Un usuario no se puede tener de padre a si mismo")
+                    correcto=True
+                elif(self._controlador.comprobarPareja(dnipareja2)):
+                    print("Este usuario no tiene pareja por lo que no es valido")
+                    correcto=True
+                elif(self._controlador.comprobarHijos(dnipareja2)):  
+                    print("Este usuario ya tiene 2 hijos asociados")                 
+                if not correcto:
+                    correcto=False
+        self._controlador.añadirPadres(dniuser, dnipareja2)
+        
+    def mostrarEventos(self, lista):
+        print("Eventos para los proximos días:")
+        for i in lista:
+            print("Fecha: ",i._fechaEvento)
+            print("Fecha maxima inscripción: ",i._fechaMaxInscripcion)
+            print("Localidad: ", i._localidad)
+            print("Provincia: ", i._provincia)
+            print("Organización: ", i._organizador)
+            print("KM Totales: ",i._kmTotales)
+            print("Precio: ",i._precio)
+            #print("Socios: ")
+            #for e in i._listadoSociosApuntados:
+                #print("-DNI: ", e)
+            #print("=================================")

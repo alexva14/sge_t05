@@ -5,6 +5,7 @@ from Modelo.ClubModelo import Club
 from Modelo.Prueba import Prueba
 from Modelo.SociosModelo import Socio
 from Modelo.UsuarioModelo import Usuario
+from Modelo.EventosModelo import Evento
 
 
 class ControladorAdmin:
@@ -18,6 +19,7 @@ class ControladorAdmin:
         Prueba.cargarUsuarios(self._club)
         Prueba.cargarSocios(self._club)
         Prueba.cargarControlCuotas(self._club)
+        Prueba.cargarEventos(self._club)
         resultado=self._club.verificarUsuariosAdm(usuario, contrasenna)
         if(resultado==1):
             while True:
@@ -36,6 +38,19 @@ class ControladorAdmin:
         elif (opc == 2):
             datos=self._vista.pedirDatosSocio()
         elif (opc ==3):
+            self._vista.pedirDatosFamiliar()
+        elif (opc ==4):
+            lista=self.sacarListaEventosProximos()
+            self._vista.mostrarEventos(lista)
+        elif (opc ==5):
+            self._vista.pedirDatosFamiliar()
+        elif (opc ==6):
+            self._vista.pedirDatosFamiliar()
+        elif (opc ==7):
+            self._vista.pedirDatosFamiliar()
+        elif (opc ==8):
+            self._vista.pedirDatosFamiliar()
+        elif (opc ==9):
             self._vista.pedirDatosFamiliar()
         else:
             pass #Confiamos en la validación del cliente porque es una app de escritorio.
@@ -62,24 +77,26 @@ class ControladorAdmin:
         self.añadirUserControlCuotas(dni)
 
     def añadirUserControlCuotas(self,dni):
-        (self._club._controlCuotas[2022])[dni]=(2022, self._club.getSocio(dni), self._club.getUsuario(dni)._corriente_pago, 15, 0, datetime.today().strftime('%Y/%m/%d'))
+        (self._club._controlCuotas[2022])[dni]=[2022, self._club.getSocio(dni), self._club.getUsuario(dni)._corriente_pago, 15, 0, datetime.today().strftime('%Y/%m/%d')]
 
     def añadirFamiliares(self, opc, dni):
         if (opc == 1):
             #comprobamos si este usuario ya tiene una pareja asignada
-            if(self._club._dicSocios[dni].familia["Pareja"]==None and self._club._dicSocios[dni].familia["Padres"]==None ):
+            if(self._club._dicSocios[dni].familia["Pareja"]==None and len(self._club._dicSocios[dni].familia["Padres"])==0):
                 self._vista.pedirDatosPareja(dni)
             else:
                 return 1
         elif (opc == 2):
             if ( self._club._dicSocios[dni].familia["Pareja"]==None): return 2
             
-            elif(len(self._club._dicSocios[dni].familia["Hijos"])<=1  and self._club._dicSocios[dni].familia["Padres"]==None ):
+            elif(len(self._club._dicSocios[dni].familia["Hijos"])<=1  and len(self._club._dicSocios[dni].familia["Padres"])==0):
                 self._vista.pedirDatosHijo(dni)
             else: return 3
         elif (opc ==3):
-            if (self._club._dicSocios[dni].familia["Pareja"]==None):
+            if (self._club._dicSocios[dni].familia["Pareja"]==None and len(self._club._dicSocios[dni].familia["Padres"])==0):
                 self._vista.pedirDatosPadres(dni)
+            else:
+                return 4
     
     def añadirPareja(self, dnipareja1, dnipareja2):
         #buscamos a la pareja 1 y le asignamos la pareja2
@@ -98,21 +115,49 @@ class ControladorAdmin:
 
         #buscamos al hijo y le asignamos los padres
         self._club._dicSocios[dnihijo].familia["Padres"]=(self._club._dicSocios[dnipareja1], self._club._dicSocios[dnipareja2])
+        self.actualizarcuotasañadirHijos(dnipareja1, dnipareja2, dnihijo)
     
+    def añadirPadres(self, dnihijo, dnipareja1):
+        #busco la pareja del padre
+        dnipareja2=self._club._dicSocios[dnipareja1].familia["Pareja"]._usuarioAsociado._dni
+        #le asignamos el hijo a ambos miembros de la pareja
+        self._club._dicSocios[dnipareja1].familia["Hijos"].append(self._club._dicSocios[dnihijo])
+        self._club._dicSocios[dnipareja2].familia["Hijos"].append(self._club._dicSocios[dnihijo])
+        #buscamos al hijo y le asignamos los padres
+        self._club._dicSocios[dnihijo].familia["Padres"]=(self._club._dicSocios[dnipareja1], self._club._dicSocios[dnipareja2])
+        self.actualizarcuotasañadirHijos(dnipareja1, dnipareja2, dnihijo)
+
     def comprobarPadres(self, dnihijo):
-        if (self._club._dicSocios[dnihijo].familia["Padres"]==None):return False
+        if (len(self._club._dicSocios[dnihijo].familia["Padres"])==0):return False
         else: return True
+    
+    def comprobarPareja(self, dni):
+        if (self._club._dicSocios[dni].familia["Pareja"]==None):return True
+        else: return False
+
+    def comprobarHijos(self, dni):
+        if (len(self._club._dicSocios[dni].familia["Hijos"])<=1):return False
+        else:return True
+    
 
     def actualizarcuotasañadirPareja(self, dnipareja1, dnipareja2):
         self._club._controlCuotas[int(datetime.today().strftime('%Y'))][dnipareja1][4]=10
-        self._club._controlCuotas[int(datetime.today().strftime('%Y'))][dnipareja1][3]=self._club._controlCuotas[int(datetime.today().strftime('%Y'))][dnipareja1][4]*0,9
+        self._club._controlCuotas[int(datetime.today().strftime('%Y'))][dnipareja1][3]=15*0,9
         self._club._controlCuotas[int(datetime.today().strftime('%Y'))][dnipareja2][4]=10
-        self._club._controlCuotas[int(datetime.today().strftime('%Y'))][dnipareja2][3]=self._club._controlCuotas[int(datetime.today().strftime('%Y'))][dnipareja2][4]*0,9
+        self._club._controlCuotas[int(datetime.today().strftime('%Y'))][dnipareja2][3]=15*0,9
     
     def actualizarcuotasañadirHijos(self, dnipareja1, dnipareja2, dnihijo):
         self._club._controlCuotas[int(datetime.today().strftime('%Y'))][dnipareja1][4]=30
-        self._club._controlCuotas[int(datetime.today().strftime('%Y'))][dnipareja1][3]=self._club._controlCuotas[int(datetime.today().strftime('%Y'))][dnipareja1][4]*0,7 
+        self._club._controlCuotas[int(datetime.today().strftime('%Y'))][dnipareja1][3]=15*0,7 
         self._club._controlCuotas[int(datetime.today().strftime('%Y'))][dnipareja2][4]=30
-        self._club._controlCuotas[int(datetime.today().strftime('%Y'))][dnipareja2][3]=self._club._controlCuotas[int(datetime.today().strftime('%Y'))][dnipareja2][4]*0,7
+        self._club._controlCuotas[int(datetime.today().strftime('%Y'))][dnipareja2][3]=15*0,7
         self._club._controlCuotas[int(datetime.today().strftime('%Y'))][dnihijo][4]=30
-        self._club._controlCuotas[int(datetime.today().strftime('%Y'))][dnihijo][3]=self._club._controlCuotas[int(datetime.today().strftime('%Y'))][dnipareja2][4]*0,7
+        self._club._controlCuotas[int(datetime.today().strftime('%Y'))][dnihijo][3]=15*0,7
+    
+    def sacarListaEventosProximos(self):
+        for i in self._club._listaEventos:
+            lista=[]
+            fecha=datetime.today().strftime('%d/%m/%Y')
+            if(datetime.strptime(i._fechaEvento,'%d/%m/%Y'))>(datetime.today().strptime(fecha, '%d/%m/%Y')):
+                lista.append(i)
+        return lista
