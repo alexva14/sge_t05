@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, time
 
 from Vista.VistaAdmin import VistaAdmin
 from Modelo.ClubModelo import Club
@@ -36,22 +36,29 @@ class ControladorAdmin:
             lista=self.sacarListaSocios()
             self._vista.mostrarSocios(lista)
         elif (opc == 2):
-            datos=self._vista.pedirDatosSocio()
+            self._vista.pedirDatosSocio()
         elif (opc ==3):
             self._vista.pedirDatosFamiliar()
         elif (opc ==4):
             lista=self.sacarListaEventosProximos()
             self._vista.mostrarEventos(lista)
         elif (opc ==5):
-            self._vista.pedirDatosFamiliar()
+            self._vista.pedirFecha()
         elif (opc ==6):
-            self._vista.pedirDatosFamiliar()
+            self._vista.pedirDatosEventos()
         elif (opc ==7):
-            self._vista.pedirDatosFamiliar()
+            año=self._vista.pedirAñoControlCuotas()
+            cuotas=self.sacarCuotas(año)
+            self._vista.mostrarControlCuotas(cuotas)
         elif (opc ==8):
-            self._vista.pedirDatosFamiliar()
+            existe=self.comprobarControlCuotas()
+            if existe:
+                self._vista.mostrarMensaje("El control de cuotas de este año ya estaba creado")
+            else:
+                self.crearControlCuotasAño()
+                self._vista.mostrarMensaje("El control de cuotas del año en curso ha sido creado con los datos nuevos")
         elif (opc ==9):
-            self._vista.pedirDatosFamiliar()
+            self._vista.pedirPagarCuota()
         else:
             pass #Confiamos en la validación del cliente porque es una app de escritorio.
 
@@ -155,9 +162,48 @@ class ControladorAdmin:
         self._club._controlCuotas[int(datetime.today().strftime('%Y'))][dnihijo][3]=15*0,7
     
     def sacarListaEventosProximos(self):
+        lista=[]
         for i in self._club._listaEventos:
-            lista=[]
             fecha=datetime.today().strftime('%d/%m/%Y')
             if(datetime.strptime(i._fechaEvento,'%d/%m/%Y'))>(datetime.today().strptime(fecha, '%d/%m/%Y')):
                 lista.append(i)
         return lista
+
+    def buscarEvento(self, fecha):
+        lista=[]
+        for i in self._club._listaEventos:
+            if(datetime.strptime(i._fechaEvento,'%d/%m/%Y'))==(datetime.strptime(fecha,'%d/%m/%Y')):
+                lista.append(i)
+        return lista
+    
+    def crearEvento(self, fecha_inicio, fecha_ins, lugar, provincia, organizacion, distancia, precio, socios):
+        self._club._listaEventos.append(Evento(fecha_inicio, fecha_ins, lugar, provincia, organizacion, distancia, precio, socios))
+    
+    def sacarCuotas(self,año):
+        try:
+            return self._club._controlCuotas[año]
+        except:
+            return ""
+    
+    def comprobarControlCuotas(self):
+        year = int(datetime.today().strftime('%Y'))
+        try:
+            datos=self._club._controlCuotas[year]
+            return True
+        except:
+            return False
+    
+    def crearControlCuotasAño(self):
+        year = int(datetime.today().strftime('%Y'))
+        controlcuotas=self._club._controlCuotas[year-1]
+        self._club._controlCuotas[year]=controlcuotas
+        #ahora lo recorremos y ponemos a todos los usuarios que no han pagado
+        for dni in self._club._controlCuotas[year]:
+            self._club._controlCuotas[year][dni][2]=False
+
+    def comprobarPagado(self,dni):
+        year = int(datetime.today().strftime('%Y'))
+        print(self._club._controlCuotas[year][dni][2], self._club._controlCuotas[year][dni][3] )
+        if self._club._controlCuotas[year][dni][2]:
+            return True
+        else: return False

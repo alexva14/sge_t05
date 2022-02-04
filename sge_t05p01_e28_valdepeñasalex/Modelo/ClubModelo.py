@@ -22,7 +22,7 @@ class Club:
     def getUsuario(self, dni):
         return self._diccUsuarios[dni]
 
-    def getSocio(self, dni):
+    def  getSocio(self, dni):
         return self._dicSocios[dni]
     
     def verificarUsuarioAdmin(self, argumentos):
