@@ -203,7 +203,16 @@ class ControladorAdmin:
 
     def comprobarPagado(self,dni):
         year = int(datetime.today().strftime('%Y'))
-        print(self._club._controlCuotas[year][dni][2], self._club._controlCuotas[year][dni][3] )
         if self._club._controlCuotas[year][dni][2]:
             return True
         else: return False
+    
+    def obtenerCantidadPagar(self,dni):
+        year = int(datetime.today().strftime('%Y'))
+        return self._club._controlCuotas[year][dni][3] 
+    
+    def pagarCuota(self,dni):
+        year = int(datetime.today().strftime('%Y'))
+        self._club.getUsuario(dni)._corriente_pago=True
+        self._club._controlCuotas[year][dni][2]= self._club.getUsuario(dni)._corriente_pago
+

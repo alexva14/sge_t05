@@ -293,3 +293,6 @@ class VistaAdmin:
             print("Este usuario ya tiene pagada la cuota")
         else:
             print("Vamos a proceder con el pago")
+            print("El total a pagar es: ",self._controlador.obtenerCantidadPagar(dni))
+            print("Pagado....")
+            self._controlador.pagarCuota(dni)
