@@ -1,3 +1,5 @@
+import json
+
 class Usuario: 
     def __init__(self, dni, contrasenna, ultimoAcceso, es_admin, pago):
         self._dni=dni
@@ -5,3 +7,5 @@ class Usuario:
         self._ultimoAcceso=ultimoAcceso
         self._es_admin=es_admin
         self._corriente_pago=pago
+
+    

@@ -1,17 +1,17 @@
 from Modelo.SociosModelo import Socio
 from Modelo.EventosModelo import Evento
 from Modelo.UsuarioModelo import Usuario
-
+import json
 class Club:
-    def __init__(self, nombreClub, cif):
+    def __init__(self, nombreClub, cif, sedeSocial=None, saldoTotal=0, controlCuotas={}):
         self._nombreClub=nombreClub
         self._cif=cif
-        self._sedeSocial=None
-        self._dicSocios=None
-        self._listaEventos=None
-        self._saldoTotal=None
-        self._controlCuotas=None
-        self._diccUsuarios= None
+        self._sedeSocial=sedeSocial
+        self._dicSocios={}
+        self._listaEventos=[]
+        self._saldoTotal=saldoTotal
+        self._controlCuotas=controlCuotas
+        self._diccUsuarios= {}
     
     def asignarListaSocios(self, diccionariosSocios):
             self._dicSocios=diccionariosSocios
@@ -50,4 +50,41 @@ class Club:
                 else:return 2
             else:return 2
         except:return 2
-            
+
+    ##ACCIONES CON EL JSON
+    
+    def guardarJSONUsuarios(rutaFich, coleccion):
+        with open(rutaFich, 'w') as f:
+            json.dump(coleccion, f, indent=2)
+    
+    def leerJSONUsuarios(self):
+        with open("usuarios.json", 'r') as f:
+            cadjson=json.load(f)
+        for i in cadjson:
+            self._diccUsuarios[i["_dni"]]=(Usuario(i["_dni"], i["_contrasenna"], i["_ultimoAcceso"], i["_es_admin"], i["_corriente_pago"]))
+
+    def leerJSONSocios(self):
+        with open("socios.json", 'r') as f:
+            cadjson=json.load(f)
+        for i in cadjson:
+            self._dicSocios[i["_usuarioAsociado"]]=(Socio(self.getUsuario(i["_usuarioAsociado"]), i["_nombreCompleto"], i["_direccion"], i["_telefono"], i["_correoElectronico"],  i["bicicletas"], i["familia"]))
+
+    def leerJSONEventos(self):
+        with open("eventos.json", 'r') as f:
+            cadjson=json.load(f)
+        for i in cadjson:
+            self._listaEventos.append(Evento(i["_fechaEvento"],i["_fechaMaxInscripcion"],i["_localidad"],i["_provincia"],i["_organizador"],i["_kmTotales"],i["_precio"],i["_listadoSociosApuntados"]))
+    
+    def guardarJSONSocios(rutaFich, coleccion):
+        with open(rutaFich, 'w') as f:
+            json.dump(coleccion, f, indent=2)
+    
+    def guardarJSONClub(rutaFich, coleccion):
+        with open(rutaFich, 'w') as f:
+            json.dump(coleccion, f, indent=2)
+    
+    def guardarJSONEventos(rutaFich, coleccion):
+        with open(rutaFich, 'w') as f:
+            json.dump(coleccion, f, indent=2)
+    
+    

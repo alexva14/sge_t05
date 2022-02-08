@@ -1,0 +1,37 @@
+[
+  {
+    "_fechaEvento": "20/04/2019",
+    "_fechaMaxInscripcion": "15/04/2019",
+    "_localidad": "Valdepe\u00f1as",
+    "_provincia": "Ciudad Real",
+    "_organizador": "MES",
+    "_kmTotales": 60,
+    "_precio": 15,
+    "_listadoSociosApuntados": [
+      "11111111A"
+    ]
+  },
+  {
+    "_fechaEvento": "20/04/2022",
+    "_fechaMaxInscripcion": "15/04/2022",
+    "_localidad": "Membrilla",
+    "_provincia": "Ciudad Real",
+    "_organizador": "ORP",
+    "_kmTotales": 100,
+    "_precio": 5,
+    "_listadoSociosApuntados": [
+      "11111111A",
+      "12123123X"
+    ]
+  },
+  {
+    "_fechaEvento": "12/02/2022",
+    "_fechaMaxInscripcion": "10/02/2022",
+    "_localidad": "Membrilla",
+    "_provincia": "Ciudad Real",
+    "_organizador": "UMA",
+    "_kmTotales": 120,
+    "_precio": 5,
+    "_listadoSociosApuntados": []
+  }
+]

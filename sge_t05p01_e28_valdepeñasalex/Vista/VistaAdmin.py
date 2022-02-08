@@ -253,17 +253,17 @@ class VistaAdmin:
                 print("Introduce un año correcto por favor")
         return año
     
-    def mostrarControlCuotas(self,cuotas):
+    def mostrarControlCuotas(self,cuotas, club):
         try:
             print("DATOS DE LAS CUOTAS")
             print("   DNI       AÑO      NOMBRE            PAGADO   PRECIO        DESCUENTO    FECHA PAGADO")
             for dni, datos in cuotas.items():
                 if (datos[2]==False):
-                    print("{:<12} {:<7} {:<20} {:<8} {:<15} {:<10}{:<10}".format(dni, datos[0], datos[1]._nombreCompleto, "No" , datos[3], datos[4], datos[5]))
+                    print("{:<12} {:<7} {:<20} {:<8} {:<15} {:<11}{:<10}".format(dni, datos[0], club.getSocio(datos[1])._nombreCompleto, "No" , datos[3], datos[4], datos[5]))
             
             for dni, datos in cuotas.items():
                 if (datos[2]==True):
-                    print("{:<12} {:<7} {:<20} {:<8} {:<15} {:<10} {:<10}".format(dni, datos[0], datos[1]._nombreCompleto, "Si" , datos[3], datos[4], datos[5]))
+                    print("{:<12} {:<7} {:<20} {:<8} {:<15} {:<10} {:<10}".format(dni, datos[0], club.getSocio(datos[1])._nombreCompleto, "Si" , datos[3], datos[4], datos[5]))
         except:
             print("No hay datos de este año")
     

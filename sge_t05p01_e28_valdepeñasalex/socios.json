@@ -1,0 +1,41 @@
+[
+  {
+    "_usuarioAsociado": "12123123X",
+    "_nombreCompleto": "Alex Valdepe\u00f1as",
+    "_direccion": "c/direccion2",
+    "_telefono": 6666666666,
+    "_correoElectronico": "alex@gmail.com",
+    "bicicletas": null,
+    "familia": {
+      "Pareja": null,
+      "Hijos": [],
+      "Padres": []
+    }
+  },
+  {
+    "_usuarioAsociado": "11111111A",
+    "_nombreCompleto": "Alejandro Montero",
+    "_direccion": "c/direccion1",
+    "_telefono": 666777888,
+    "_correoElectronico": "alejandro@gmail.com",
+    "bicicletas": null,
+    "familia": {
+      "Pareja": null,
+      "Hijos": [],
+      "Padres": []
+    }
+  },
+  {
+    "_usuarioAsociado": "22222222B",
+    "_nombreCompleto": "Fran Montero",
+    "_direccion": "c/direccion1",
+    "_telefono": 111222333,
+    "_correoElectronico": "fran@gmail.com",
+    "bicicletas": null,
+    "familia": {
+      "Pareja": null,
+      "Hijos": [],
+      "Padres": []
+    }
+  }
+]

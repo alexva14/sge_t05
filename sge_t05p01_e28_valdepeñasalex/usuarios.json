@@ -1,0 +1,23 @@
+[
+  {
+    "_dni": "11111111A",
+    "_contrasenna": "admin",
+    "_ultimoAcceso": "24/01/2022",
+    "_es_admin": true,
+    "_corriente_pago": true
+  },
+  {
+    "_dni": "22222222B",
+    "_contrasenna": "usuario1",
+    "_ultimoAcceso": "23/01/2022",
+    "_es_admin": false,
+    "_corriente_pago": false
+  },
+  {
+    "_dni": "12123123X",
+    "_contrasenna": "admin",
+    "_ultimoAcceso": "23/01/2022",
+    "_es_admin": true,
+    "_corriente_pago": true
+  }
+]

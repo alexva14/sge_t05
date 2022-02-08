@@ -1,0 +1,39 @@
+[
+  {
+    "_nombreClub": "Los Satanases del Infierno",
+    "_cif": 13230,
+    "_sedeSocial": null,
+    "_dicSocios": {},
+    "_listaEventos": [],
+    "_saldoTotal": 0,
+    "_controlCuotas": {
+      "2022": {
+        "12123123X": [
+          2022,
+          "12123123X",
+          true,
+          15,
+          0,
+          "27-01-2022"
+        ],
+        "11111111A": [
+          2022,
+          "11111111A",
+          true,
+          15,
+          0,
+          "27-01-2022"
+        ],
+        "22222222B": [
+          2022,
+          "22222222B",
+          false,
+          15,
+          0,
+          "27-01-2022"
+        ]
+      }
+    },
+    "_diccUsuarios": {}
+  }
+]
