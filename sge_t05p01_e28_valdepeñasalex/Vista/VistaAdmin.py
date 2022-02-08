@@ -81,7 +81,7 @@ class VistaAdmin:
         contrasenna=input()
         print("¿Es admin el usuario? ")
         admin=input()
-        if (admin.lower=="si"):
+        if (admin.lower()=="si"):
             admin=True
         else:admin=False
         print("Introduce el nombre completo del nuevo socio")

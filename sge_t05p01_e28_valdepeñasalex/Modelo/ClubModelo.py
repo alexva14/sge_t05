@@ -58,19 +58,19 @@ class Club:
             json.dump(coleccion, f, indent=2)
     
     def leerJSONUsuarios(self):
-        with open("usuarios.json", 'r') as f:
+        with open("sge_t05p01_e28_valdepeñasalex/usuarios.json", 'r') as f:
             cadjson=json.load(f)
         for i in cadjson:
             self._diccUsuarios[i["_dni"]]=(Usuario(i["_dni"], i["_contrasenna"], i["_ultimoAcceso"], i["_es_admin"], i["_corriente_pago"]))
 
     def leerJSONSocios(self):
-        with open("socios.json", 'r') as f:
+        with open("sge_t05p01_e28_valdepeñasalex/socios.json", 'r') as f:
             cadjson=json.load(f)
         for i in cadjson:
             self._dicSocios[i["_usuarioAsociado"]]=(Socio(self.getUsuario(i["_usuarioAsociado"]), i["_nombreCompleto"], i["_direccion"], i["_telefono"], i["_correoElectronico"],  i["bicicletas"], i["familia"]))
 
     def leerJSONEventos(self):
-        with open("eventos.json", 'r') as f:
+        with open("sge_t05p01_e28_valdepeñasalex/eventos.json", 'r') as f:
             cadjson=json.load(f)
         for i in cadjson:
             self._listaEventos.append(Evento(i["_fechaEvento"],i["_fechaMaxInscripcion"],i["_localidad"],i["_provincia"],i["_organizador"],i["_kmTotales"],i["_precio"],i["_listadoSociosApuntados"]))
