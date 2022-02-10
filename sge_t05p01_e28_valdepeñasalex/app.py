@@ -5,14 +5,11 @@ from Controlador.AdminController import ControladorAdmin
 from Controlador.UserController import ControladorUser
 import json
 
-
-
-
 if __name__ == "__main__":
 
     #club =Club("Los Satanases del Infierno", 13230)
     
-    #creamos el club
+    #creamos el club sge_t05p01_e28_valdepeñasalex/
     with open("sge_t05p01_e28_valdepeñasalex/club.json", 'r') as f:
         cadjson=json.load(f)
     for i in cadjson:
@@ -20,7 +17,7 @@ if __name__ == "__main__":
     
 
     #argumentos=["app.py","-u", "11111111A", "-p", "admin", "-A"]
-    argumentos=["app.py","-u", "22222222B", "-p", "usuario1"]
+    argumentos=["app.py","-u", "11111111A", "-p", "admin"]
     #argumentos=sys.argv
 
     if(argumentos[1]=="-u" and argumentos[3]=="-p"):

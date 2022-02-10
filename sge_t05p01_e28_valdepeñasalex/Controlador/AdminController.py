@@ -6,6 +6,7 @@ from Modelo.Prueba import Prueba
 from Modelo.SociosModelo import Socio
 from Modelo.UsuarioModelo import Usuario
 from Modelo.EventosModelo import Evento
+from Modelo.ControlDatos import ControlDatos
 
 
 class ControladorAdmin:
@@ -32,58 +33,9 @@ class ControladorAdmin:
         else:
             self._vista.mostrarError("Este usuario no tiene permisos para acceder")
     
-
-    def prepararDictSocio(self,c):
-        dictPrep=c.__dict__.copy()
-        dictPrep["_usuarioAsociado"]=c._usuarioAsociado._dni
-        return dictPrep
-
-    def prepararDictClub(self,c):
-        dictPrep=c.copy()
-        dictPrep["_dicSocios"]={}
-        dictPrep["_listaEventos"]=[]
-        dictPrep["_diccUsuarios"]={}
-        
-        return dictPrep
-
-    def guardarDatos(self):
-        #USUARIOS
-        listaUsuariosAux=list()
-        for i in self._club._diccUsuarios.values():
-            listaUsuariosAux.append(i.__dict__)
-        
-        Club.guardarJSONUsuarios("sge_t05p01_e28_valdepeñasalex/usuarios.json", listaUsuariosAux)
-        del listaUsuariosAux
-
-        #SOCIOS
-        listaUsuariosAux=list()
-        for e in self._club._dicSocios.values():
-            socio=e
-            listaUsuariosAux.append(socio)       
-
-        colAux=list()
-        for c in listaUsuariosAux:
-            colAux.append(self.prepararDictSocio(c)) #Looping Using List 
-        Club.guardarJSONSocios("sge_t05p01_e28_valdepeñasalex/socios.json", colAux)
-
-        #CLUB
-        colAux=list()
-        colAux.append(self.prepararDictClub(self._club.__dict__))
-
-        Club.guardarJSONClub("sge_t05p01_e28_valdepeñasalex/club.json", colAux )
-        
-        #EVENTOS
-        listaUsuariosAux=list()
-        for i in self._club._listaEventos:
-            listaUsuariosAux.append(i.__dict__)
-        
-        Club.guardarJSONEventos("sge_t05p01_e28_valdepeñasalex/eventos.json", listaUsuariosAux)
-        del listaUsuariosAux
-
-
     def ControlOpciones(self, opc):
         if (opc == 0):
-            self.guardarDatos()
+            ControlDatos.guardarDatos(self._club)
             self._vista.salir()
         elif (opc == 1):
             lista=self.sacarListaSocios()

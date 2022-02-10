@@ -2,13 +2,17 @@ from Modelo.SociosModelo import Socio
 from Modelo.UsuarioModelo import Usuario
 from Modelo.ClubModelo import Club
 from Modelo.EventosModelo import Evento
+from Modelo.BicicletaModelo import Bicicleta
+from Modelo.ReparacionModelo import Reparacion
 
 class Prueba: 
     def cargarSocios(club : Club):
         #self._listaSocios = {'11111111A' : Usuario ("admin", "C/admin", 666777888, "admin@gmail.com")}
         #def _init_(self, usuarioAsociado: Usuario, nombreCompleto, direccion, telefono, correoElectronico, bicicletas: Bicicleta, familia):
         club.asignarListaSocios({'12123123X' : Socio (club.getUsuario('12123123X'), 'Alex Valdepeñas', 'c/direccion2', 6666666666, "alex@gmail.com"),
-        '11111111A' : Socio (club.getUsuario('11111111A'), 'Alejandro Montero', 'c/direccion1', 666777888, "alejandro@gmail.com"),
+        '11111111A' : Socio (club.getUsuario('11111111A'), 'Alejandro Montero', 'c/direccion1', 666777888, "alejandro@gmail.com",
+        [Bicicleta('30/05/2020', "Canondale", "Modelo1", "Montaña", "Negro", 5, 27, 600, [Reparacion('30/05/2021', 120, "Cambio de manillar", "delantera"), Reparacion('30/09/2021', 120, "Cambio de manillar", "delantera")]), Bicicleta('26/06/2020', "Trek", "Modelo2", "Carretera", "Azul", 6, 29, 700, [Reparacion('30/05/2021', 120, "Cambio de manillar", "delantera")])]
+        ),
         '22222222B' : Socio (club.getUsuario('22222222B'), 'Fran Montero', 'c/direccion1', 111222333, "fran@gmail.com")})
     
     def cargarUsuarios(club : Club):

@@ -3,6 +3,7 @@ from Modelo.ClubModelo import Club
 from Modelo.Prueba import Prueba
 from datetime import datetime
 from datetime import date
+from Modelo.ControlDatos import ControlDatos
 
 class ControladorUser:
     def __init__(self,  club: Club, usuario, contrasenna):
@@ -31,6 +32,7 @@ class ControladorUser:
 
     def controlOpciones(self,opc, usuario):
         if (opc == 0):
+            ControlDatos.guardarDatos(self._club)
             self._vista.salir()
         elif (opc == 1):
             listado = self.obtenerEventosUsuario(usuario)
@@ -41,6 +43,9 @@ class ControladorUser:
         elif (opc == 3):
             listado = self.obtenerBicicletas(usuario)
             self._vista.mostrarBicicletas(listado)
+        elif (opc == 4):
+            listado = self.obtenerReparaciones(usuario)
+            self._vista.mostrarReparaciones(listado)
     
     def obtenerEventosUsuario(self, usuario):
         listado = []
@@ -60,12 +65,39 @@ class ControladorUser:
                 listado.append(i)
         return listado
 
-    #algo para el segundo apartado
-    def apuntarSocioEvento(self, usuario, posicion):
-        self._club._listaEventos[posicion]._listadoSociosApuntados.append(usuario)
+    def controlarSocioEvento(self, usuario, e, listado):
+        apuntado=False
+        for i in listado[e]._listadoSociosApuntados:
+            if i==usuario:
+                apuntado=True
+        return apuntado
+
+    def apuntarSocioEvento(self, usuario, posicion, eventosfuturos):
+        eventosfuturos[posicion]._listadoSociosApuntados.append(usuario)
+        #saco la lista de los eventos que son antiguos
+        eventospasados = []
+        for i in self._club._listaEventos:
+            fecha = datetime.today().strftime('%d/%m/%Y')
+            if(datetime.strptime(i._fechaEvento,'%d/%m/%Y'))<(datetime.today().strptime(fecha, '%d/%m/%Y')):
+                eventospasados.append(i)
+        #añado los eventos pasados a una nueva lista
+        eventos=[]
+        for i in eventospasados:
+            eventos.append(i)
+        for i in eventosfuturos:
+            eventos.append(i)
+        self._club._listaEventos=eventos
+
         
     def obtenerBicicletas(self, usuario):
         listadoBicicletas = []
-        for i in self._club._dicSocios[usuario]._bicicletas:
+        for i in self._club._dicSocios[usuario].bicicletas:
             listadoBicicletas.append(i)
         return listadoBicicletas
+    
+    def obtenerReparaciones(self, usuario):
+        listadoReparaciones = []
+        for i in self._club._dicSocios[usuario].bicicletas:
+            for e in i._listaReparaciones:
+                listadoReparaciones.append(e)
+        return listadoReparaciones

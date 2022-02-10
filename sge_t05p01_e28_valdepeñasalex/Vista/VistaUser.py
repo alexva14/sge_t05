@@ -18,7 +18,16 @@ class VistaUser:
                 self.salir
 
     def mostrarMenu(self, usuario):
-        print("Menú Usuario:") 
+        print("")
+        print("************************************************")
+        print("*              LOS SATANASES DEL               *")
+        print("*                INFIERNO APP                  *")
+        print("************************************************")
+        print("*             Zona de usuarios                 *")
+        print("*                Usuario: ",usuario,"          *")
+        print("*                Último acc.:                  *")
+        print("************************************************")
+        print("")
         print("====")
         print("1. Ver mis próximos eventos y la lista de inscritos")
         print("2. Ver y apuntarme a eventos abiertos")
@@ -85,7 +94,12 @@ class VistaUser:
                     print("¿Deseas apuntarte a este evento (si/no)?")
                     respuesta=input()
                     if(respuesta.lower()=="si"): 
-                        self._controlador.apuntarSocioEvento(usuario, e)
+                        if (self._controlador.controlarSocioEvento(usuario, e, listado)):
+                            print("Ya estas apuntado a este evento")
+                        else:
+                                self._controlador.apuntarSocioEvento(usuario, e, listado)
+                                print("Apuntado al evento con exito")
+                        
                         respuesta=True
                     e+=1
         else:
@@ -104,6 +118,19 @@ class VistaUser:
                 print("Tamaño Cuadro: ", i._tamannoCuadro)
                 print("Tamaño Ruedas: ", i._tamannoRuedas)
                 print("Precio: ", i._precio)
+                print("-------------------------------------")
+        else: 
+            print("No tienes bicicletas disponibles")
+    
+    def mostrarReparaciones(self, listado):
+        if(len(listado)>0):
+            print("Tus reparaciones/mantenimientos realizados a tus diferentes bicicletas son: ")
+            print()
+            for i in listado: 
+                print("Fecha: ", i._fecha)
+                print("Coste: ", i._coste)
+                print("Descripción: ", i._descripcion)
+                print("Categoria: ", i._categoria)
                 print("-------------------------------------")
         else: 
             print("No tienes bicicletas disponibles")

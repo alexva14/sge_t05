@@ -21,7 +21,8 @@
     "_precio": 5,
     "_listadoSociosApuntados": [
       "11111111A",
-      "12123123X"
+      "12123123X",
+      "22222222B"
     ]
   },
   {
@@ -32,6 +33,8 @@
     "_organizador": "UMA",
     "_kmTotales": 120,
     "_precio": 5,
-    "_listadoSociosApuntados": []
+    "_listadoSociosApuntados": [
+      "11111111A"
+    ]
   }
 ]
