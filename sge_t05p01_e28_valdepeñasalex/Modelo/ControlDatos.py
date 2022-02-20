@@ -33,7 +33,8 @@ class ControlDatos:
         
         return dictPrep
 
-    def guardarDatos(club):
+    def guardarDatos(club: Club):
+
         #USUARIOS
         listaUsuariosAux=list()
         for i in club._diccUsuarios.values():

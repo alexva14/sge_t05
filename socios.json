@@ -116,10 +116,7 @@
     "familia": {
       "Pareja": null,
       "Hijos": [],
-      "Padres": [
-        "22222222Q",
-        "11111111Q"
-      ]
+      "Padres": []
     }
   },
   {
@@ -130,11 +127,9 @@
     "_correoElectronico": "clara@gmail.com",
     "bicicletas": [],
     "familia": {
-      "Pareja": "88888888A",
+      "Pareja": null,
       "Hijos": [
-        "99999999A",
-        "77777777A",
-        "22222222A"
+        "77777777A"
       ],
       "Padres": []
     }
@@ -150,7 +145,6 @@
       "Pareja": null,
       "Hijos": [],
       "Padres": [
-        "88888888A",
         "66666666A"
       ]
     }
@@ -163,11 +157,9 @@
     "_correoElectronico": "reven@gmail.com",
     "bicicletas": [],
     "familia": {
-      "Pareja": "66666666A",
+      "Pareja": null,
       "Hijos": [
-        "99999999A",
-        "77777777A",
-        "22222222A"
+        "99999999A"
       ],
       "Padres": []
     }
@@ -183,8 +175,7 @@
       "Pareja": null,
       "Hijos": [],
       "Padres": [
-        "88888888A",
-        "66666666A"
+        "88888888A"
       ]
     }
   },
@@ -198,54 +189,6 @@
     "familia": {
       "Pareja": null,
       "Hijos": [],
-      "Padres": [
-        "66666666A",
-        "88888888A"
-      ]
-    }
-  },
-  {
-    "_usuarioAsociado": "33333333a",
-    "_nombreCompleto": "Carlos",
-    "_direccion": "calle",
-    "_telefono": 2345654345,
-    "_correoElectronico": "carlos@gmail.com",
-    "bicicletas": [],
-    "familia": {
-      "Pareja": null,
-      "Hijos": [
-        "00000000A"
-      ],
-      "Padres": []
-    }
-  },
-  {
-    "_usuarioAsociado": "11111111Q",
-    "_nombreCompleto": "Carlos",
-    "_direccion": "calle",
-    "_telefono": 678909876,
-    "_correoElectronico": "carlos@gmail.com",
-    "bicicletas": [],
-    "familia": {
-      "Pareja": "22222222Q",
-      "Hijos": [
-        "00000000A"
-      ],
-      "Padres": []
-    }
-  },
-  {
-    "_usuarioAsociado": "22222222Q",
-    "_nombreCompleto": "Carla",
-    "_direccion": "calle",
-    "_telefono": 654567231,
-    "_correoElectronico": "carla@gmail.com",
-    "bicicletas": [],
-    "familia": {
-      "Pareja": "11111111Q",
-      "Hijos": [
-        "00000000A"
-      ],
       "Padres": []
     }
   }

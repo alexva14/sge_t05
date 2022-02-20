@@ -18,7 +18,7 @@ class VistaAdmin:
         finally:
                 self.salir
 
-    def mostrarMenu(self, usuario):
+    def mostrarMenu(self, usuario, fecha):
         print("Menú Admin:") 
         print("")
         print("************************************************")
@@ -27,7 +27,7 @@ class VistaAdmin:
         print("************************************************")
         print("*            Zona de administración            *")
         print("*                Usuario: ",usuario,"          *")
-        print("*                Último acc.:                  *")
+        print("*                Último acc.:",fecha,"      *")
         print("************************************************")
         print("")
         print("====")
@@ -41,10 +41,10 @@ class VistaAdmin:
         print("8. Actualizar el control de cuotas")
         print("9. Realizar el pago de una cuota por DNI de socio")
         print("0. Salir.")
-        self.leerOpcionMenu()
+        self.leerOpcionMenu(usuario)
         
     
-    def leerOpcionMenu(self):
+    def leerOpcionMenu(self, usuario):
         opc=0
         try:
             opc=int(input("Deme una opción: "))
@@ -53,7 +53,7 @@ class VistaAdmin:
             print("Debes introducir un número entero.")
         if (opc >=0 and opc <=9):
             #return opc
-            self._controlador.ControlOpciones(opc)
+            self._controlador.ControlOpciones(opc, usuario)
         else:
             print("Debes introducir un número entero entre 0 y 9.")
 
@@ -64,6 +64,8 @@ class VistaAdmin:
         print("->Nombre de nuestros socios<-")
         for nombre in sorted(lista_socios):
             print("- ",nombre)
+        print("Pulsa Intro para continuar...")
+        input()
     
     def salir(self):
         print("Cerrando aplicación...")
@@ -93,6 +95,8 @@ class VistaAdmin:
         print("Introduce el correo electronico")
         correo=input()
         self._controlador.crearSocUser(dni, contrasenna, admin, nombre, direccion, telefono, correo)
+        print("Pulsa Intro para continuar...")
+        input()
     
     def pedirDatosFamiliar(self):
         correcto=True
@@ -112,7 +116,7 @@ class VistaAdmin:
         if (opc >=1 and opc <=3):
             accion=self._controlador.añadirFamiliares(opc, dnipareja1)
             if accion==1:
-                print("Este usuario ya dispone de una pareja asignada")
+                print("Este usuario ya dispone de una pareja asignada o tiene padres asignados")
             if accion==2:
                 print("Primero debes asignar una pareja a este cliente")
             if accion==3:
@@ -120,6 +124,8 @@ class VistaAdmin:
             if accion==4:
                 print("Este usuario ya tiene padres asociados")
         else:print("Debes introducir un número entero entre 0 y 9.")
+        print("Pulsa Intro para continuar...")
+        input()
     
     def pedirDatosPareja(self, dnipareja1):
         correcto=True
@@ -162,11 +168,12 @@ class VistaAdmin:
                 if (dnipareja2==dniuser):
                     print("Un usuario no se puede tener de padre a si mismo")
                     correcto=True
-                elif(self._controlador.comprobarPareja(dnipareja2)):
-                    print("Este usuario no tiene pareja por lo que no es valido")
-                    correcto=True
-                elif(self._controlador.comprobarHijos(dnipareja2)):  
-                    print("Este usuario ya tiene 2 hijos asociados")                 
+                #elif(self._controlador.comprobarPareja(dnipareja2)):
+                    #print("Este usuario no tiene pareja por lo que no es valido")
+                else:
+                    correcto=False
+                #elif(self._controlador.comprobarHijos(dnipareja2)):  
+                    #print("Este usuario ya tiene 2 hijos asociados")                 
                 if not correcto:
                     correcto=False
         self._controlador.añadirPadres(dniuser, dnipareja2)
@@ -181,6 +188,9 @@ class VistaAdmin:
             print("Organización: ", i._organizador)
             print("KM Totales: ",i._kmTotales)
             print("Precio: ",i._precio)
+            print("-----------------------")
+        print("Pulsa Intro para continuar...")
+        input()
 
     def pedirFecha(self):
         correcto= True
@@ -205,6 +215,8 @@ class VistaAdmin:
             for e in i._listadoSociosApuntados:
                 print("-DNI: ", e)
             print("=================================")
+        print("Pulsa Intro para continuar...")
+        input()
     
     def pedirDatosEventos(self):
         correcto= True
@@ -241,6 +253,8 @@ class VistaAdmin:
         socios=[]
         self._controlador.crearEvento(fecha_inicio, fecha_ins, lugar, provincia, organizacion, distancia, precio, socios)
         print("Evento creado con exito!!")
+        print("Pulsa Intro para continuar...")
+        input()
     
     def pedirAñoControlCuotas(self):
         correcto=True
@@ -266,9 +280,13 @@ class VistaAdmin:
                     print("{:<12} {:<7} {:<20} {:<8} {:<15} {:<10} {:<10}".format(dni, datos[0], club.getSocio(datos[1])._nombreCompleto, "Si" , datos[3], datos[4], datos[5]))
         except:
             print("No hay datos de este año")
+        print("Pulsa Intro para continuar...")
+        input()
     
     def mostrarMensaje(self, string):
         print(string)
+        print("Pulsa Intro para continuar...")
+        input()
 
     def pedirPagarCuota(self):
         correcto=True
@@ -296,3 +314,5 @@ class VistaAdmin:
             print("El total a pagar es: ",self._controlador.obtenerCantidadPagar(dni))
             print("Pagado....")
             self._controlador.pagarCuota(dni)
+        print("Pulsa Intro para continuar...")
+        input()

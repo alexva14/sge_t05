@@ -33,6 +33,9 @@ class Club:
             if argumentos[5]=="-A":return True                  
         if len(argumentos)==5:return False        
 
+    def verificarUsuarioUser(self, argumentos):               
+        if len(argumentos)==5:return True
+
     def verificarUsuariosAdm(self, usuario: Usuario, contrasenna):
         try:
             if(self._diccUsuarios[usuario]):

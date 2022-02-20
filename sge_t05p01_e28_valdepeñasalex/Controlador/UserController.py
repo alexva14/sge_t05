@@ -4,6 +4,8 @@ from Modelo.Prueba import Prueba
 from datetime import datetime
 from datetime import date
 from Modelo.ControlDatos import ControlDatos
+from Modelo.BicicletaModelo import Bicicleta
+from Modelo.ReparacionModelo import Reparacion
 
 class ControladorUser:
     def __init__(self,  club: Club, usuario, contrasenna):
@@ -23,8 +25,9 @@ class ControladorUser:
         resultado=self._club.verificarUsuariosUs(usuario, contrasenna)
 
         if(resultado==1):
+            fecha=self._club._diccUsuarios[usuario]._ultimoAcceso
             while True:
-                self._vista.mostrarMenu(usuario)
+                self._vista.mostrarMenu(usuario, fecha)
         elif(resultado==2):
             self._vista.mostrarError("El usuario o la contraseña no existen")
         else:
@@ -32,6 +35,8 @@ class ControladorUser:
 
     def controlOpciones(self,opc, usuario):
         if (opc == 0):
+            #GUARDAR LA ULTIMA HORA DE ACCESO
+            self._club._diccUsuarios[usuario]._ultimoAcceso=datetime.today().strftime('%d/%m/%Y')
             ControlDatos.guardarDatos(self._club)
             self._vista.salir()
         elif (opc == 1):
@@ -46,6 +51,17 @@ class ControladorUser:
         elif (opc == 4):
             listado = self.obtenerReparaciones(usuario)
             self._vista.mostrarReparaciones(listado)
+        elif (opc == 5):
+            self._vista.pedirDatosBicicleta(usuario)
+        elif (opc == 6):
+            listado = self.obtenerBicicletas(usuario)
+            self._vista.verApuntarReparacion(listado, usuario)
+        elif (opc == 7):
+            familia = self._club._dicSocios[usuario].familia
+            self._vista.mostarFamilia(familia)
+        elif (opc == 8):
+            cuotas = self.obtenerDatosCuotas(usuario)
+            self._vista.mostrarDatosCuotas(cuotas)
     
     def obtenerEventosUsuario(self, usuario):
         listado = []
@@ -98,6 +114,24 @@ class ControladorUser:
     def obtenerReparaciones(self, usuario):
         listadoReparaciones = []
         for i in self._club._dicSocios[usuario].bicicletas:
-            for e in i._listaReparaciones:
-                listadoReparaciones.append(e)
+            #for e in i._listaReparaciones:
+            listadoReparaciones.append(i)
         return listadoReparaciones
+
+    def agregarBicicleta(self, fecha, marca, modelo, tipo, color, cuadro, ruedas, precio, usuario):
+        self._club._dicSocios[usuario].bicicletas.append(Bicicleta(fecha,marca, modelo, tipo, color, cuadro, ruedas, precio, []))
+    
+    def crearReparacionBicicleta(self, e, usuario, listado, fecha, coste, descripcion, categoria):
+        listado[e]._listaReparaciones.append(Reparacion(fecha, coste, descripcion, categoria))
+    
+    def obtenerSocio(self, dni):
+        return self._club._dicSocios[dni]
+    
+    def obtenerDatosCuotas(self, usuario):
+        cuotas={}
+        for i in self._club._controlCuotas:
+            for e in self._club._controlCuotas[i]:
+                if e==usuario:
+                    cuotas[i]=self._club._controlCuotas[i][e]
+        return cuotas
+                    
