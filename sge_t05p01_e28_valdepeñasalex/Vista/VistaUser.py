@@ -1,6 +1,7 @@
 from datetime import date
 from datetime import datetime
 
+
 class VistaUser:
 
     def __init__(self, contr): 
@@ -45,12 +46,12 @@ class VistaUser:
         try:
             opc=int(input("Deme una opción: "))
         except:
-            raise Exception("Debes introducir un número entero.")
-
+            opc=0
+            print("Debes introducir un número entero. Se cerrara el programa")
         if (opc >=0 and opc <=8):
             self._controlador.controlOpciones(opc, usuario)
         else:
-            raise Exception("Debes introducir un número entero entre 0 y 8.")
+            print("Debes introducir un número entero entre 0 y 8.")
 
     def mostrarError(self, exc):
         print("Error!! {}".format(exc))
@@ -215,14 +216,24 @@ class VistaUser:
                 correcto=False
             except:
                 print("Introduce una fecha correcta")
-        
-        print("Introduce el coste de la reparación:")
-        coste=float(input())
+        correcto= True
+        while correcto:
+            try:
+                print("Introduce el coste de la reparación:")
+                coste=float(input())
+                correcto=False
+            except:
+                print("Introduce una cifra correcta")
         print("Introduce una breve descripción: ")
         descripcion=input()
-        print("Introduce la categoria (RUEDAS, FRENOS, ASIENTO, CUADRO, DELANTERA, TRASERA)")
-        categoria=input()
-        self._controlador.crearReparacionBicicleta(e, usuario, listado, fecha, coste, descripcion, categoria)
+        correcto=True
+        while correcto:
+            print("Introduce la categoria (RUEDAS, FRENOS, ASIENTO, CUADRO, DELANTERA, TRASERA, OTROS)")
+            categoria=input()
+            correcto=self._controlador.comprobarCategoria(categoria.upper())
+            if correcto:
+                print("Escribe una de las categroias mencionadas anteriormente")
+        self._controlador.crearReparacionBicicleta(e, usuario, listado, fecha, coste, descripcion, categoria.upper())
     
     def mostarFamilia(self, familia):
         print("Tu familia es la siguiente:")

@@ -43,6 +43,18 @@
             "_coste": 120,
             "_descripcion": "Cambio de manillar",
             "_categoria": "delantera"
+          },
+          {
+            "_fecha": "20/02/2022",
+            "_coste": 56.0,
+            "_descripcion": "sillin",
+            "_categoria": "ASIENTO"
+          },
+          {
+            "_fecha": "21/02/2022",
+            "_coste": 43.0,
+            "_descripcion": "cuadro",
+            "_categoria": "sfasfd"
           }
         ]
       },

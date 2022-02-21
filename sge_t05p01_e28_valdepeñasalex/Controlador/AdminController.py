@@ -1,3 +1,4 @@
+from asyncio import run_coroutine_threadsafe
 from datetime import datetime, time
 
 from Vista.VistaAdmin import VistaAdmin
@@ -7,6 +8,7 @@ from Modelo.SociosModelo import Socio
 from Modelo.UsuarioModelo import Usuario
 from Modelo.EventosModelo import Evento
 from Modelo.ControlDatos import ControlDatos
+
 
 
 class ControladorAdmin:

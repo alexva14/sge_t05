@@ -90,8 +90,15 @@ class VistaAdmin:
         nombre=input()
         print("Introduce una direccion")
         direccion=input()
-        print("Introduce un numero de telefono")
-        telefono=int(input())
+        correcto= True
+        while correcto:
+            try:
+                print("Introduce un numero de telefono")
+                telefono=int(input())
+                correcto=False
+            except:
+                print("Introduce numeros por favor")
+        
         print("Introduce el correo electronico")
         correo=input()
         self._controlador.crearSocUser(dni, contrasenna, admin, nombre, direccion, telefono, correo)

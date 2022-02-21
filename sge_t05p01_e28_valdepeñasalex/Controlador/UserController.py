@@ -6,6 +6,8 @@ from datetime import date
 from Modelo.ControlDatos import ControlDatos
 from Modelo.BicicletaModelo import Bicicleta
 from Modelo.ReparacionModelo import Reparacion
+from Modelo.CategoriasEnum import Categoria
+
 
 class ControladorUser:
     def __init__(self,  club: Club, usuario, contrasenna):
@@ -135,3 +137,11 @@ class ControladorUser:
                     cuotas[i]=self._club._controlCuotas[i][e]
         return cuotas
                     
+    def comprobarCategoria(self, categoria):
+        try:
+            for c in Categoria:
+                if c.name==categoria:
+                    return False
+            return True
+        except:
+            return True
