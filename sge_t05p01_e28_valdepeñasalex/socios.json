@@ -63,6 +63,24 @@
             "_categoria": "delantera"
           }
         ]
+      },
+      {
+        "_fechaCompra": "21/02/2022",
+        "_marca": "BH",
+        "_modelo": "Carretera",
+        "_tipo": "Carretera",
+        "_color": "Rojo",
+        "_tamannoCuadro": 23.0,
+        "_tamannoRuedas": "17",
+        "_precio": "1000",
+        "_listaReparaciones": [
+          {
+            "_fecha": "21/02/2022",
+            "_coste": 34.0,
+            "_descripcion": "cambio",
+            "_categoria": "RUEDAS"
+          }
+        ]
       }
     ],
     "familia": {
@@ -214,7 +232,8 @@
     "familia": {
       "Pareja": null,
       "Hijos": [
-        "00000000A"
+        "00000000A",
+        "D"
       ],
       "Padres": []
     }
@@ -247,6 +266,63 @@
         "00000000A"
       ],
       "Padres": []
+    }
+  },
+  {
+    "_usuarioAsociado": "A",
+    "_nombreCompleto": "A",
+    "_direccion": "A",
+    "_telefono": 1,
+    "_correoElectronico": "A",
+    "bicicletas": [],
+    "familia": {
+      "Pareja": "B",
+      "Hijos": [],
+      "Padres": []
+    }
+  },
+  {
+    "_usuarioAsociado": "B",
+    "_nombreCompleto": "B",
+    "_direccion": "B",
+    "_telefono": 2,
+    "_correoElectronico": "B",
+    "bicicletas": [],
+    "familia": {
+      "Pareja": "A",
+      "Hijos": [],
+      "Padres": []
+    }
+  },
+  {
+    "_usuarioAsociado": "C",
+    "_nombreCompleto": "C",
+    "_direccion": "C",
+    "_telefono": 3,
+    "_correoElectronico": "C",
+    "bicicletas": [],
+    "familia": {
+      "Pareja": null,
+      "Hijos": [
+        "D"
+      ],
+      "Padres": []
+    }
+  },
+  {
+    "_usuarioAsociado": "D",
+    "_nombreCompleto": "D",
+    "_direccion": "D",
+    "_telefono": 4,
+    "_correoElectronico": "D",
+    "bicicletas": [],
+    "familia": {
+      "Pareja": null,
+      "Hijos": [],
+      "Padres": [
+        "C",
+        "33333333a"
+      ]
     }
   }
 ]

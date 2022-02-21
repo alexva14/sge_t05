@@ -17,7 +17,7 @@ if __name__ == "__main__":
     
 
     argumentos=["app.py","-u", "11111111A", "-p", "admin", "-A"]
-    #argumentos=["app.py","-u", "11111111A", "-p", "admin"]
+    #argumentos=["app.py","-u", "C", "-p", "C"]
     #argumentos=sys.argv
 
     if(argumentos[1]=="-u" and argumentos[3]=="-p"):

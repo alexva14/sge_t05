@@ -183,7 +183,11 @@ class ControladorAdmin:
             self._club._dicSocios[dnihijo].familia["Padres"]=[dnipareja1]
             self.actualizarcuotasañadirHijo(dnipareja1, dnihijo)
 
-        
+    def comprobarPadre(self, dnipareja2, dniuser):
+        if (len(self._club._dicSocios[dniuser].familia["Padres"])==1 and self._club._dicSocios[dnipareja2].familia["Pareja"]!= None):
+            return True
+        else:
+            return False
     
     def añadirPadres(self, dnihijo, dnipareja1):
         #busco la pareja del padre

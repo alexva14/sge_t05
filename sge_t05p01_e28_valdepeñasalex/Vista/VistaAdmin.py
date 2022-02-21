@@ -122,7 +122,7 @@ class VistaAdmin:
             if accion==3:
                 print("Este usuario ya tiene dos hijos asociados")
             if accion==4:
-                print("Este usuario ya tiene padres asociados")
+                print("Este usuario ya dispone de una pareja asignada o tiene padres asignados")
         else:print("Debes introducir un número entero entre 0 y 9.")
         print("Pulsa Intro para continuar...")
         input()
@@ -168,14 +168,11 @@ class VistaAdmin:
                 if (dnipareja2==dniuser):
                     print("Un usuario no se puede tener de padre a si mismo")
                     correcto=True
-                #elif(self._controlador.comprobarPareja(dnipareja2)):
-                    #print("Este usuario no tiene pareja por lo que no es valido")
+                if(self._controlador.comprobarPadre(dnipareja2, dniuser)):
+                    print("Un usuario no puede tenre más de dos padres")
+                    correcto=True
                 else:
-                    correcto=False
-                #elif(self._controlador.comprobarHijos(dnipareja2)):  
-                    #print("Este usuario ya tiene 2 hijos asociados")                 
-                if not correcto:
-                    correcto=False
+                    correcto=False               
         self._controlador.añadirPadres(dniuser, dnipareja2)
         
     def mostrarEventos(self, lista):
