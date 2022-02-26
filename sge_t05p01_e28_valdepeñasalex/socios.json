@@ -9,8 +9,7 @@
     "familia": {
       "Pareja": "11111111A",
       "Hijos": [
-        "22222222B",
-        "33333333C"
+        "22222222B"
       ],
       "Padres": []
     }
@@ -98,8 +97,7 @@
     "familia": {
       "Pareja": "12123123X",
       "Hijos": [
-        "22222222B",
-        "33333333C"
+        "22222222B"
       ],
       "Padres": []
     }
@@ -121,184 +119,11 @@
     }
   },
   {
-    "_usuarioAsociado": "33333333C",
-    "_nombreCompleto": "Sofia Bellon",
-    "_direccion": "calle 3",
-    "_telefono": 678908789,
-    "_correoElectronico": "sofia@gmail.com",
-    "bicicletas": [],
-    "familia": {
-      "Pareja": null,
-      "Hijos": [],
-      "Padres": [
-        "12123123X",
-        "11111111A"
-      ]
-    }
-  },
-  {
-    "_usuarioAsociado": "00000000A",
-    "_nombreCompleto": "Cloe",
-    "_direccion": "calle 3",
-    "_telefono": 123321231,
-    "_correoElectronico": "cloe@gmail.com",
-    "bicicletas": [],
-    "familia": {
-      "Pareja": null,
-      "Hijos": [],
-      "Padres": [
-        "22222222Q",
-        "11111111Q"
-      ]
-    }
-  },
-  {
-    "_usuarioAsociado": "66666666A",
-    "_nombreCompleto": "Clara",
-    "_direccion": "calle",
-    "_telefono": 0,
-    "_correoElectronico": "clara@gmail.com",
-    "bicicletas": [],
-    "familia": {
-      "Pareja": "88888888A",
-      "Hijos": [
-        "99999999A",
-        "77777777A",
-        "22222222A"
-      ],
-      "Padres": []
-    }
-  },
-  {
-    "_usuarioAsociado": "77777777A",
-    "_nombreCompleto": "Paco",
-    "_direccion": "calle",
-    "_telefono": 123789567,
-    "_correoElectronico": "paco@gmail.com",
-    "bicicletas": [],
-    "familia": {
-      "Pareja": null,
-      "Hijos": [],
-      "Padres": [
-        "88888888A",
-        "66666666A"
-      ]
-    }
-  },
-  {
-    "_usuarioAsociado": "88888888A",
-    "_nombreCompleto": "Reven",
-    "_direccion": "calle",
-    "_telefono": 234567890,
-    "_correoElectronico": "reven@gmail.com",
-    "bicicletas": [],
-    "familia": {
-      "Pareja": "66666666A",
-      "Hijos": [
-        "99999999A",
-        "77777777A",
-        "22222222A"
-      ],
-      "Padres": []
-    }
-  },
-  {
-    "_usuarioAsociado": "99999999A",
-    "_nombreCompleto": "Nerea",
-    "_direccion": "calle",
-    "_telefono": 678908765,
-    "_correoElectronico": "nerea@gmail.com",
-    "bicicletas": [],
-    "familia": {
-      "Pareja": null,
-      "Hijos": [],
-      "Padres": [
-        "88888888A",
-        "66666666A"
-      ]
-    }
-  },
-  {
-    "_usuarioAsociado": "22222222A",
-    "_nombreCompleto": "Chista",
-    "_direccion": "calle",
-    "_telefono": 567890766,
-    "_correoElectronico": "chista@gmail.com",
-    "bicicletas": [],
-    "familia": {
-      "Pareja": null,
-      "Hijos": [],
-      "Padres": [
-        "66666666A",
-        "88888888A"
-      ]
-    }
-  },
-  {
-    "_usuarioAsociado": "33333333a",
-    "_nombreCompleto": "Carlos",
-    "_direccion": "calle",
-    "_telefono": 2345654345,
-    "_correoElectronico": "carlos@gmail.com",
-    "bicicletas": [],
-    "familia": {
-      "Pareja": null,
-      "Hijos": [
-        "00000000A",
-        "D"
-      ],
-      "Padres": []
-    }
-  },
-  {
-    "_usuarioAsociado": "11111111Q",
-    "_nombreCompleto": "Carlos",
-    "_direccion": "calle",
-    "_telefono": 678909876,
-    "_correoElectronico": "carlos@gmail.com",
-    "bicicletas": [],
-    "familia": {
-      "Pareja": "22222222Q",
-      "Hijos": [
-        "00000000A"
-      ],
-      "Padres": []
-    }
-  },
-  {
-    "_usuarioAsociado": "22222222Q",
-    "_nombreCompleto": "Carla",
-    "_direccion": "calle",
-    "_telefono": 654567231,
-    "_correoElectronico": "carla@gmail.com",
-    "bicicletas": [],
-    "familia": {
-      "Pareja": "11111111Q",
-      "Hijos": [
-        "00000000A"
-      ],
-      "Padres": []
-    }
-  },
-  {
     "_usuarioAsociado": "A",
     "_nombreCompleto": "A",
     "_direccion": "A",
     "_telefono": 1,
     "_correoElectronico": "A",
-    "bicicletas": [],
-    "familia": {
-      "Pareja": "B",
-      "Hijos": [],
-      "Padres": []
-    }
-  },
-  {
-    "_usuarioAsociado": "B",
-    "_nombreCompleto": "B",
-    "_direccion": "B",
-    "_telefono": 2,
-    "_correoElectronico": "B",
     "bicicletas": [],
     "familia": {
       "Pareja": "A",
@@ -307,34 +132,16 @@
     }
   },
   {
-    "_usuarioAsociado": "C",
-    "_nombreCompleto": "C",
-    "_direccion": "C",
-    "_telefono": 3,
-    "_correoElectronico": "C",
-    "bicicletas": [],
-    "familia": {
-      "Pareja": null,
-      "Hijos": [
-        "D"
-      ],
-      "Padres": []
-    }
-  },
-  {
-    "_usuarioAsociado": "D",
-    "_nombreCompleto": "D",
-    "_direccion": "D",
+    "_usuarioAsociado": "B",
+    "_nombreCompleto": "B",
+    "_direccion": "B",
     "_telefono": 4,
-    "_correoElectronico": "D",
+    "_correoElectronico": "B",
     "bicicletas": [],
     "familia": {
-      "Pareja": null,
+      "Pareja": "A",
       "Hijos": [],
-      "Padres": [
-        "C",
-        "33333333a"
-      ]
+      "Padres": []
     }
   }
 ]

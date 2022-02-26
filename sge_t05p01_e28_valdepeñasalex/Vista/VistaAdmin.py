@@ -304,9 +304,7 @@ class VistaAdmin:
                 print("Este usuario no existe")
         #comprobamos si el año en curso esta en eñ control de cuotas
         existe=self._controlador.comprobarControlCuotas()
-        if existe:
-            self.mostrarMensaje("El control de cuotas de este año ya estaba creado")
-        else:
+        if not existe:
             self._controlador.crearControlCuotasAño()
             self.mostrarMensaje("El control de cuotas del año en curso ha sido creado con los datos nuevos")
         #comrpobamos si este usuario tiene pagada la cuota
