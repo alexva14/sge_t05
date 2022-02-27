@@ -1,3 +1,4 @@
+from nis import cat
 import sys
 from datetime import date
 from datetime import datetime
@@ -140,28 +141,41 @@ class VistaAdmin:
             print("Introduce el dni de la pareja (debe ser socia del club): ")
             dnipareja2=input()
             correcto=self._controlador.comprobarExisteDni(dnipareja2)
-            #correcto=False
-            if (dnipareja2==dnipareja1):
-                print("Un usuario no se puede tener de paereja a si mismo")
-                correcto=True            
-            if not correcto:
-                correcto=False
+            try:
+                #correcto=False
+                if (dnipareja2==dnipareja1):
+                    print("Un usuario no se puede tener de paereja a si mismo")
+                    correcto=True            
+                if not correcto:
+                    correcto=False
+            except:
+                correcto=True
         self._controlador.añadirPareja(dnipareja1, dnipareja2)
 
     def pedirDatosHijo(self, dnipareja1):
         correcto=True
+        try:
+            dnipareja2=self._controlador.sacarDniPareja(dnipareja1)
+        except:
+            dnipareja2=""
         while correcto:
             print("Introduce el dni del hij@ (debe ser soci@ del club): ")
             dnihijo=input()
             correcto=self._controlador.comprobarExisteDni(dnihijo)
-            #correcto=False
-            if (dnihijo==dnipareja1):
-                print("Un usuario no se puede tener de hijo a si mismo")
-                correcto=True            
-            elif (self._controlador.comprobarPadres(dnihijo)):
-                print("Este usuario ya tiene unos padres asociados")
-            if not correcto:
-                correcto=False
+            try:
+                #correcto=False
+                if (dnihijo==dnipareja1):
+                    print("Un usuario no se puede tener de hijo a si mismo")
+                    correcto=True
+                elif (self._controlador.comprobarPadres(dnihijo)):
+                    print("Este usuario ya tiene unos padres asociados")
+                elif(dnihijo==dnipareja2):
+                    print("Un usuario no puede tener de hijo a su pareja")
+                    correcto=True
+                else:
+                    correcto=False
+            except:
+                correcto=True
         self._controlador.añadirHijo(dnipareja1, dnihijo)
     
     def pedirDatosPadres(self, dniuser):
@@ -170,16 +184,19 @@ class VistaAdmin:
             print("Introduce el dni de uno de los padres: ")
             dnipareja2=input()
             correcto=self._controlador.comprobarExisteDni(dnipareja2)
-            #correcto=False
-            if (not correcto):
-                if (dnipareja2==dniuser):
-                    print("Un usuario no se puede tener de padre a si mismo")
-                    correcto=True
-                if(self._controlador.comprobarPadre(dnipareja2, dniuser)):
-                    print("Un usuario no puede tenre más de dos padres")
-                    correcto=True
-                else:
-                    correcto=False               
+            try:
+                #correcto=False
+                if (not correcto):
+                    if (dnipareja2==dniuser):
+                        print("Un usuario no se puede tener de padre a si mismo")
+                        correcto=True
+                    if(self._controlador.comprobarPadre(dnipareja2, dniuser)):
+                        print("Un usuario no puede tenre más de dos padres")
+                        correcto=True
+                    else:
+                        correcto=False     
+            except:
+                correcto=True          
         self._controlador.añadirPadres(dniuser, dnipareja2)
         
     def mostrarEventos(self, lista):

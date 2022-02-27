@@ -220,6 +220,8 @@ class ControladorAdmin:
         if (len(self._club._dicSocios[dni].familia["Hijos"])<=1):return False
         else:return True
     
+    def sacarDniPareja(self, dnipareja1):
+        return self._club._dicSocios[dnipareja1].familia["Pareja"]
 
     def actualizarcuotasañadirPareja(self, dnipareja1, dnipareja2):
         self._club._controlCuotas[str(datetime.today().strftime('%Y'))][dnipareja1][4]=10
@@ -302,5 +304,3 @@ class ControladorAdmin:
         self._club._controlCuotas[year][dni][2]= self._club.getUsuario(dni)._corriente_pago
         #ACTAULIZAMOS LA FECHA DE PAGO A LA ACTUAL
         self._club._controlCuotas[year][dni][5]=datetime.today().strftime('%d/%m/%Y')
-
-
