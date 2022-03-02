@@ -1,4 +1,3 @@
-from nis import cat
 import sys
 from datetime import date
 from datetime import datetime
@@ -128,7 +127,7 @@ class VistaAdmin:
             if accion==2:
                 print("Primero debes asignar una pareja a este cliente")
             if accion==3:
-                print("Este usuario ya tiene dos hijos asociados")
+                print("No se pueden agregar hijos a este usuario")
             if accion==4:
                 print("Este usuario ya dispone de una pareja asignada o tiene padres asignados")
         else:print("Debes introducir un número entero entre 0 y 9.")

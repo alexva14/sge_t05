@@ -5,6 +5,7 @@ import json
 
 from Modelo.BicicletaModelo import Bicicleta
 from Modelo.ReparacionModelo import Reparacion
+from datetime import datetime, time
 class Club:
     def __init__(self, nombreClub, cif, sedeSocial=None, saldoTotal=0, controlCuotas={}):
         self._nombreClub=nombreClub
@@ -41,8 +42,17 @@ class Club:
             if(self._diccUsuarios[usuario]):
                 usuario=self._diccUsuarios[usuario]
                 if(contrasenna==usuario._contrasenna):
-                    if(usuario._es_admin):return 1
-                    else:return 3                      
+                    if(usuario._es_admin):
+                        today=datetime.strptime( datetime.today().strftime('%d/%m/%Y') ,"%d/%m/%Y")
+                        ult_acceso=datetime.strptime(self._diccUsuarios[usuario._dni]._ultimoAcceso, "%d/%m/%Y")
+                        diferencia = today-ult_acceso
+                        if diferencia.days<30:
+                            if(self._diccUsuarios[usuario._dni]._corriente_pago):
+                                return 1
+                            else: return 3
+                        else:
+                            return 3
+                    else:return 4                      
                 else:return 2               
             else:return 2             
         except:return 2        
@@ -52,7 +62,15 @@ class Club:
             if(self._diccUsuarios[usuario]):
                 usuario=self._diccUsuarios[usuario]
                 if(contrasenna==usuario._contrasenna):
-                    return 1
+                    today=datetime.strptime( datetime.today().strftime('%d/%m/%Y') ,"%d/%m/%Y")
+                    ult_acceso=datetime.strptime(self._diccUsuarios[usuario._dni]._ultimoAcceso, "%d/%m/%Y")
+                    diferencia = today-ult_acceso
+                    if diferencia.days<30:
+                        if(self._diccUsuarios[usuario._dni]._corriente_pago):
+                            return 1
+                        else: return 4
+                    else:
+                        return 3
                 else:return 2
             else:return 2
         except:return 2

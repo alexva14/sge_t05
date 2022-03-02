@@ -117,31 +117,5 @@
         "11111111A"
       ]
     }
-  },
-  {
-    "_usuarioAsociado": "A",
-    "_nombreCompleto": "A",
-    "_direccion": "A",
-    "_telefono": 1,
-    "_correoElectronico": "A",
-    "bicicletas": [],
-    "familia": {
-      "Pareja": "B",
-      "Hijos": [],
-      "Padres": []
-    }
-  },
-  {
-    "_usuarioAsociado": "B",
-    "_nombreCompleto": "B",
-    "_direccion": "B",
-    "_telefono": 4,
-    "_correoElectronico": "B",
-    "bicicletas": [],
-    "familia": {
-      "Pareja": "A",
-      "Hijos": [],
-      "Padres": []
-    }
   }
 ]

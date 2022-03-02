@@ -27,7 +27,7 @@ class ControladorAdmin:
         Club.leerJSONEventos(self._club)
         #Prueba.cargarEventos(self._club)
         resultado=self._club.verificarUsuariosAdm(usuario, contrasenna)
-        resultado=self.verificarAcceso(usuario, contrasenna)
+        #resultado=self.verificarAcceso(usuario, contrasenna)
         if(resultado==1):
             fecha=self._club._diccUsuarios[usuario]._ultimoAcceso
             while True:
